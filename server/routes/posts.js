@@ -4,8 +4,9 @@ const {Posts} = require('../models') // we get the Posts object from the models 
 
 
 
-router.get('/', (req, res) => {
-    res.send("message take 1")
+router.get('/', async (req, res) => {
+    const allPosts = await Posts.findAll();
+    res.json(allPosts);
 });
 
 router.post('/', async (req, res) => {
