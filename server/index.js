@@ -1,19 +1,12 @@
 const express = require("express")
-//const Sequelize = require('sequelize');
 const app = express()
-
-// const sequelize = new Sequelize(
-//     'fullstack',
-//     'root',
-//     'lilwayne', {
-//     dialect: 'mysql',
-//     host : 'localhost'  
-//     }
-    
-// )
-
-
 const db = require("./models")
+app.use(express.json())
+
+
+const postRouter = require("./routes/posts")
+app.use("/tweet", postRouter) // middleware to handle the routes 
+
 
 
 db.sequelize.sync().then( () => {
@@ -22,4 +15,3 @@ db.sequelize.sync().then( () => {
     })
 })
 
-//module.exports = sequelize

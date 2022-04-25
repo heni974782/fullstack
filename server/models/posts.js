@@ -13,5 +13,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     });
-    return Posts;
+    return Posts; //object to return of this model
+
 }
