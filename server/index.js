@@ -1,8 +1,10 @@
 const express = require("express")
 const app = express()
 const db = require("./models")
-app.use(express.json())
+const cors = require("cors")
 
+app.use(express.json());
+app.use(cors());
 
 const postRouter = require("./routes/posts")
 app.use("/tweet", postRouter) // middleware to handle the routes 
