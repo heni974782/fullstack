@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios"; // package used to http methods (post, get, put...)
 import {Formik, Form, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup' // a library/package to verify that the content put in is correct (data type, length:min and max....)
+import {useNavigate} from 'react-router-dom';
 
 function NewTweet() {   
     // we create an empty object to pass it in the Formik section as initial value 
@@ -10,10 +11,13 @@ function NewTweet() {
         postText:"",
         username:"",
     }
-    // we create a function that defines the funtion that we will run when click on the button "post your tweet"
+
+    let navigate = useNavigate();
+    // we create a function that defines the funtion that we will run when click on the button "post your tweet" by pointing at the endpoint of the server 
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/tweet", data).then((response) => {
-            console.log('submition of the data is done')
+            //console.log('submition of the data is done')
+            navigate('/');
         })
     }
     // we define what we should write in the form's sections 
@@ -22,6 +26,8 @@ function NewTweet() {
         postText: Yup.string().max(200).required(),
         username: Yup.string().min(3).max(20).required(),
     })
+
+    
 
   return (
     <div className='createPostPage'>
