@@ -1,39 +1,23 @@
 import './App.css';
-import axios from "axios";
-import {useEffect , useState} from "react"; // states used to import the api from the back-encd
+import {BrowserRouter as Router, Route, Routes, Link} from "react-router-dom";
+import Home from "./pages/Home"
+import NewTweet from './pages/newTweet';
 
 
 function App() {
   
-  const [allPosts, setListOfPosts] = useState([]); // set a list of Posts fetched from the Data base 
-
-  // useEffect state is used to get the raw data from the specific server local host 
-  useEffect(() => {
-    axios.get("http://localhost:3001/tweet").then((response) => {
-      
-      setListOfPosts(response.data);  
-
-    })
-  }, [])
-
-  return <div className="App">
-    {allPosts.map((value, key) => {
-      return (
-      <div className='post'>   
-
-      <div className='title'>  {value.title} </div>
-      <div className='body'> {value.postText}</div>
-      <div className='footer'> {value.username} </div>
-
-
-      </div>
-      
-
-      );
-
-
-    })}
-  </div>;
+  return (
+  <div className="App">
+    <Router>
+    <Link to='/newTweet'>Add new tweet</Link>
+    <Link to='/'>Home pages</Link>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/newTweet' element={<NewTweet/>} />
+      </Routes>
+    </Router>
+  </div>
+  
+  );
 }
-
 export default App;
