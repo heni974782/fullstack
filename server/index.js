@@ -9,6 +9,9 @@ app.use(cors());
 const postRouter = require("./routes/posts")
 app.use("/tweet", postRouter) // middleware to handle the routes 
 
+const commentsRouter = require("./routes/comments")
+app.use("/comments", commentsRouter) // middleware to handle the routes 
+
 
 
 db.sequelize.sync().then( () => {
