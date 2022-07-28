@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { default: Post } = require('../../client/app/src/pages/Post');
 const router = express.Router()
 const {Posts} = require('../models') // we get the Posts object from the models folder 
 
@@ -23,5 +24,16 @@ router.post('/', async (req, res) => {
     res.json(Posts);
 });
 
+
+router.delete("/:postId", async(req, res) => {
+    const postId = req.params.postId
+    await Posts.destroy({
+        where : {
+            id : postId,   
+        }
+    })
+
+    res.json("delete successful")
+})
 
 module.exports = router
