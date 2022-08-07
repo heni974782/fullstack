@@ -1,5 +1,5 @@
 const express = require('express');
-const { default: Post } = require('../../client/app/src/pages/Post');
+//const { default: Post } = require('../../client/app/src/pages/Post');
 const router = express.Router()
 const {Posts} = require('../models') // we get the Posts object from the models folder 
 
@@ -24,6 +24,14 @@ router.post('/', async (req, res) => {
     res.json(Posts);
 });
 
+router.put('/title', async(req, res) => {
+    const {newTitle , id } = req.body 
+    await Posts.update({title : newTitle} , { where : { id :  id }}) 
+    res.json(newTitle)
+})
+
+
+
 
 router.delete("/:postId", async(req, res) => {
     const postId = req.params.postId
@@ -35,5 +43,7 @@ router.delete("/:postId", async(req, res) => {
 
     res.json("delete successful")
 })
+
+
 
 module.exports = router
