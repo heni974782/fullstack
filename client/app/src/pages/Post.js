@@ -44,12 +44,23 @@ function Post() {
         })
     }
 
+    const editPost = (option) => {
+        if (option = "title") {
+            let newTitle = prompt('type the new title of the tweet:')
+            axios.put("http://localhost:3001/tweet/title", {newTitle : newTitle , id : id })
+        } 
+    }
+
   return (
     <div className='postPage'>
         <div className='leftSide'>
             <div className='post' id='individual'>
-            <div className='title'>{postObject.title}</div>
+
+            <div className='title' onClick={() => {editPost("title")}}>{postObject.title}</div>
+
             <div className='body'>{postObject.postText}</div>
+
+
             <div className='footer'>{postObject.username} 
                 <button onClick={() => {
                     deletePost(postObject.id)
