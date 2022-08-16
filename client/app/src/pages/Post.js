@@ -5,10 +5,10 @@ import axios from 'axios'
 
 
 function Post() {
-    let { id } = useParams();
+    let { id } = useParams(); // we get the ID of the post 
 
-    const [postObject, setPostObject] = useState({});
-    const [comments, setComments] = useState([]);
+    const [postObject, setPostObject] = useState({}); // get the Posts from the API and set it in a state format 
+    const [comments, setComments] = useState([]); // ge the comments 
     const [newComment, setNewComment] = useState("");
 
     // we get the id from the server by pointing to the right endpoint of the server 
@@ -50,7 +50,7 @@ function Post() {
             axios.put("http://localhost:3001/tweet/title", {newTitle : newTitle , id : id })
         } 
     }
-
+// we query through  the data from the post state 
   return (
     <div className='postPage'>
         <div className='leftSide'>
@@ -73,8 +73,13 @@ function Post() {
             </div>
         </div>
 
+
+
+
+
+
         <div className='rightSide'>
-            <div className='addCommentContainer'>
+            <div className='addCommentContainer'> 
                 <input 
                 type="text" 
                 placeholder="Comment...."  

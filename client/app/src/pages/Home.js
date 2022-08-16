@@ -15,7 +15,7 @@ let navigate = useNavigate();
       setListOfPosts(response.data);  
     })
   }, [])
-
+// we map through all the posts taken from the backend and display it 
   return (
     <div>
         {allPosts.map((value, key) => {

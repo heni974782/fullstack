@@ -17,7 +17,7 @@ function NewTweet() {
     const onSubmit = (data) => {
         axios.post("http://localhost:3001/tweet", data).then((response) => {
             //console.log('submition of the data is done')
-            navigate('/');
+            navigate('/'); // redirect to home page after submiting th post 
         })
     }
     // we define what we should write in the form's sections 
@@ -28,7 +28,7 @@ function NewTweet() {
     })
 
     
-
+//html to fill th form 
   return (
     <div className='createPostPage'>
         <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
