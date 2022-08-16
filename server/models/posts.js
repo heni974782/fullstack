@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         },
     });
 
+    // creat the 1 to N relation between the posts and the comments 
     Posts.associate = (models) =>{
         Posts.hasMany(models.Comments, {
             onDelete : "cascade",

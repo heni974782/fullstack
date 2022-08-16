@@ -3,8 +3,8 @@ const app = express()
 const db = require("./models")
 const cors = require("cors")
 
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); // parse the Json
+app.use(cors()); // middleware that link the API with the FrontEnd
 
 const postRouter = require("./routes/posts")
 app.use("/tweet", postRouter) // middleware to handle the routes 
